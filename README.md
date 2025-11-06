@@ -1,49 +1,30 @@
-# FileStream
+# File Line Numbers with Paging (Chapter 12)
 
-A C++ console application project designed to demonstrate working with file input/output using file streams. Built using Visual Studio (or another C++ development environment) as part of a classroom assignment.
+A C++ console application that reads a text file specified by the user and displays its contents line by line with line numbers. The program pauses after every 24 lines, allowing the user to continue reading at their own pace. This exercise reinforces file I/O operations and stream control in C++.
 
----
+## Overview
+- Prompts the user to enter a filename.
+- Attempts to open the file using an `ifstream`.
+- Displays each line of text prefixed with a line number.
+- After 24 lines, pauses and waits for the user to press Enter before continuing.
+- Detects and handles empty files.
+- Closes the file stream at the end of execution.
 
-## Project Overview
+## Core Logic
+- Uses a counter variable to track and print line numbers sequentially.
+- Reads file contents using `getline()` for accurate line handling.
+- After every 24 lines, invokes a pause prompt (`Press Enter to continue...`).
+- Checks `ifstream.fail()` to handle invalid or missing file paths gracefully.
+- Prints a message if the file is empty or cannot be opened.
 
-This project covers these core concepts:
+## Input Validation
+- Verifies that the filename entered exists and can be opened.
+- Ensures the program continues only when the stream state is valid.
+- Uses a loop to safely handle user input for filenames containing spaces.
 
-- Opening, reading from, and writing to files using `std::ifstream` and `std::ofstream`.  
-- Working with `std::fstream` for combined input/output if needed.  
-- Handling data files (text or binary) and processing their content (for example: reading numbers, strings, or records).  
-- Validating file operations (checking if file opened successfully, handling end-of-file, closing streams).  
-- Formatting output and/or appending data to files.  
-- Organizing code into functions and using clear comments and error-checking.
-
----
-
-## Features
-
-- Prompt the user for a filename to read.  
-- Read and display contents of the file (line by line or record by record).  
-- Prompt the user for a filename (or the same file) to write/app end data.  
-- Write user input (or generated data) into a file in a structured format.  
-- Close the files properly and handle error cases (file not found, access denied).  
-- Display summary information (e.g., number of lines read, total records processed) to the console.
-
----
-
-## Technologies Used
-
-- Language: C++ (compatible with C++11 or later)  
-- IDE: Visual Studio 2019/2022 (or any compiler environment that supports C++)  
-- Version Control: Git & GitHub  
-
----
-
-## Getting Started
-
-### Prerequisites
-
-You will need a machine with a C++ compiler (Windows/Visual Studio preferred) and familiarity with basic C++ (variables, loops, functions, file IO).
-
-### Clone the repository
-
-```bash
-git clone https://github.com/Javi1591/FileStream.git
-cd FileStream
+## Build & Run
+- Visual Studio (Windows): open the solution or create a Console App and add the source file, then **Build → Run**.
+- g++ (CLI):
+  ```bash
+  g++ -std=c++11 -O2 -o FileLineNumbers nazarioCPP212.cpp
+  ./FileLineNumbers
